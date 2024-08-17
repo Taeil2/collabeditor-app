@@ -2,10 +2,15 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import LoginButton from "@/components/LoginButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <>
       <Head>
@@ -15,6 +20,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
+      <LoginButton />
+      <button onClick={() => loginWithRedirect()}>Log In</button>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
