@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Button from "@/components/Button";
 import ButtonGroup from "@/components/ButtonGroup";
 
-import { FaPlus, FaPencil } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
+import { FaPen } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 
 const Container = styled.div`
@@ -29,7 +30,7 @@ export default function Header() {
     </div>
     <ButtonGroup buttons={[
       {
-        icon: <FaPencil />,
+        icon: <FaPen />,
         text: "change name",
         onClick: () => { console.log('clicked') },
       },

@@ -4,8 +4,11 @@ import { colors, grays } from "@/styles/styles"
 const colorsArr = Object.keys(colors).map(key => [colors[key]]);
 
 const Container = styled.div`
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
   position: relative;
+  margin-right: 3px;
+  margin-bottom: 4px;
 `
 
 const Circle = styled.div`
@@ -23,10 +26,10 @@ const Circle = styled.div`
   font-size: 16px;
   color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
   cursor: default;
+  margin: 0 2px;
   &:hover + #tag {
     opacity: 1;
   }
@@ -35,6 +38,7 @@ const Circle = styled.div`
 const Tag = styled.div`
   opacity: 0;
   position: absolute;
+  z-index: 1;
   top: 29px;
   left: 0;
   border-radius: 4px;

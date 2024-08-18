@@ -32,5 +32,8 @@ const StyledButton = styled.button`
 export default function Button(props) {
   const { icon, text, onClick, color } = props
 
-  return <StyledButton onClick={onClick} $color={color}>{icon}<span>{text}</span></StyledButton>
+  return <StyledButton onClick={onClick} $color={color}>
+    {icon}
+    {text && <span>{text}</span>}
+  </StyledButton>
 }

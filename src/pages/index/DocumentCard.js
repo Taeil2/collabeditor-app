@@ -8,30 +8,39 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 const Card = styled.div`
   display: grid;
-  grid-template-columns: auto 200px 200px;
+  grid-template-columns: auto 161px 111px;
+  column-gap: 20px;
   border-radius: 5px;
   border: 1px solid ${grays.gray4};
   padding: 20px;
   padding-top: 9px;
   background: #fff;
+  cursor: pointer;
+  margin-bottom: 30px;
   > div:first-of-type {
     p {
       color: ${grays.gray6}
     }
   }
   > div:not(:first-of-type) {
-    padding-top: 10px;
+    padding-top: 24px;
+    h6 {
+      margin-bottom: 10px;
+    }
   }
-`
-
-const Description = styled.p`
-  font-size: 14px;
-  color: ${grays.gray7};
-`
-
-const UpdatedContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  > div:last-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      font-size: 16px;
+      color: ${grays.gray5};
+      margin-top: -5px;
+    }
+    button {
+      align-self: end;
+    }
+  }
 `
 
 export default function DocumentCard(props) {
@@ -46,14 +55,14 @@ export default function DocumentCard(props) {
       <h6>collabeditors</h6>
       <Collabeditor collabeditor={document.owner} index={0} />
       {
-        document.collabeditors.map((collabeditor, i) => {
-          <Collabeditor collabeditor={collabeditor} index={i + 1} />
-        })
+        document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} /> )
       }
     </div>
     <div>
-      <h6>updated</h6>
-      <Description>{document.updated}</Description>
+      <div>
+        <h6>updated</h6>
+        <p>{document.updated}</p>
+      </div>
       <Button
         icon={<FaRegTrashAlt />}
         onClick={() => {

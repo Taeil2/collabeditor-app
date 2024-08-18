@@ -56,6 +56,10 @@ const GlobalStyles = styled.div`
     font-size: 14px;
     color: #5C7EFF;
   }
+
+  p {
+    line-height: 1.4em;
+  }
 `;
 
 export default GlobalStyles
