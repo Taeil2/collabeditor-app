@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-
 const colors = {
   red: "#FF0D0A",
   redOrange: "#F52900",
@@ -29,34 +27,4 @@ const grays = {
   gray9: "#1A1A1A",
 }
 
-const H1 = styled.div`
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 48px;
-`
-
-const H2 = styled.div`
-  font-family: "Open Sans";
-  font-weight: 500;
-  font-size: 40px;
-`
-
-const H3 = styled.div`
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 32px;
-`
-
-const H4 = styled.div`
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 24px;
-`
-
-const H5 = styled.div`
-  font-family: "Open Sans";
-  font-weight: 400;
-  font-size: 20px;
-`
-
-export { colors, grays, H1, H2, H3, H4, H5 } 
+export { colors, grays } 

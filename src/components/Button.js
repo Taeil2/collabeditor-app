@@ -4,9 +4,17 @@ import { colors } from '@/styles/styles'
 const StyledButton = styled.button`
   display: inline-flex;
   align-items: center;
-  background: ${colors.cyan};
+  background: ${props => {
+    if (props.$color === "red") { return colors.red }
+    else if (props.$color === "gray") { return colors.gray }
+    else { return colors.cyan }
+  }};
   &:hover {
-    background: ${colors.darkCyan};
+    background: ${props => {
+      if (props.$color === "red") { return colors.darkRed }
+      else if (props.$color === "gray") { return colors.darkGray }
+      else { return colors.darkCyan }
+    }};
   }
   height: 35px;
   padding: 0 10px;
@@ -20,8 +28,9 @@ const StyledButton = styled.button`
   transition: background 200ms linear;
 `;
 
+// color options are cyan, red, gray
 export default function Button(props) {
-  const { icon, text, onClick } = props
+  const { icon, text, onClick, color } = props
 
-  return <StyledButton onClick={onClick}>{icon}<span>{text}</span></StyledButton>
+  return <StyledButton onClick={onClick} $color={color}>{icon}<span>{text}</span></StyledButton>
 }

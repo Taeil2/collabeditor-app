@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { grays } from '@/styles/styles'
 
-import Collabeditor from './Collabeditor'
-import Button from './Button'
+import Collabeditor from '@/components/Collabeditor'
+import Button from '@/components/Button'
 
 import { FaRegTrashAlt } from "react-icons/fa";
 
@@ -12,7 +12,16 @@ const Card = styled.div`
   border-radius: 5px;
   border: 1px solid ${grays.gray4};
   padding: 20px;
+  padding-top: 9px;
   background: #fff;
+  > div:first-of-type {
+    p {
+      color: ${grays.gray6}
+    }
+  }
+  > div:not(:first-of-type) {
+    padding-top: 10px;
+  }
 `
 
 const Description = styled.p`

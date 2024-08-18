@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { colors } from '@/styles/styles';
 
 import Button from './Button';
 
@@ -9,16 +8,11 @@ const ButtonContainer = styled.div`
   overflow: hidden;
   button {
     border-radius: 0 !important;
-    background: ${colors.gray};
-    &:hover {
-      background: ${colors.darkGray};
-    }
   }
   button + button {
     border-left: 1px solid #fff;
   }
 `
-
 
 export default function ButtonGroup(props) {
   const { buttons } = props
@@ -27,7 +21,7 @@ export default function ButtonGroup(props) {
     {buttons.map((button, i) => {
       const { icon, text, onClick } = button
 
-      return <Button icon={icon} text={text} onClick={onClick} key={i} />
+      return <Button icon={icon} text={text} onClick={onClick} key={i} color="gray" />
     })}
   </ButtonContainer>
 }
