@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Mask = styled.div`
   display: flex;
@@ -19,12 +19,14 @@ const ModalContainer = styled.div`
 `
 
 export default function Modal(props) {
-  const { children, closeModal, closeButton } = props;
+  const { children, closeModal, closeButton } = props
 
-  return <Mask>
-    <ModalContainer>
-      {children}
-      {closeButton && <></>}
-    </ModalContainer>
-  </Mask>
+  return (
+    <Mask>
+      <ModalContainer>
+        {children}
+        {closeButton && <></>}
+      </ModalContainer>
+    </Mask>
+  )
 }

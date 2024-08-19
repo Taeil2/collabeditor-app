@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { colors, grays } from "@/styles/styles"
+import styled from 'styled-components'
+import { colors, grays } from '@/styles/styles'
 
-const colorsArr = Object.keys(colors).map(key => [colors[key]]);
+const colorsArr = Object.keys(colors).map((key) => [colors[key]])
 
 const Container = styled.div`
   display: inline-flex;
@@ -15,7 +15,7 @@ const Circle = styled.div`
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  background: ${props => {
+  background: ${(props) => {
     if (props.$index < 5) {
       return colorsArr[props.$index * 2]
     } else {
@@ -47,7 +47,7 @@ const Tag = styled.div`
   line-height: 14px;
   font-size: 10px;
   color: #fff;
-  background: ${props => {
+  background: ${(props) => {
     if (props.$index < 5) {
       return colorsArr[props.$index * 2]
     } else {
@@ -66,11 +66,13 @@ const OwnerLabel = styled.div`
 export default function Collabeditor(props) {
   const { collabeditor, index } = props
 
-  return <Container>
-      <Circle $index={index}>
-        {collabeditor.name[0]}
-      </Circle>
-      <Tag className="tag" $index={index}>collabeditor.name</Tag>
+  return (
+    <Container>
+      <Circle $index={index}>{collabeditor.name[0]}</Circle>
+      <Tag className="tag" $index={index}>
+        collabeditor.name
+      </Tag>
       {index === 0 && <OwnerLabel>owner</OwnerLabel>}
     </Container>
+  )
 }

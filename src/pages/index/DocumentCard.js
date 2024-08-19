@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Collabeditor from '@/components/Collabeditor'
 import Button from '@/components/Button'
 
-import { FaRegTrashAlt } from "react-icons/fa"
+import { FaRegTrashAlt } from 'react-icons/fa'
 
 const Card = styled.div`
   display: grid;
@@ -21,7 +21,7 @@ const Card = styled.div`
   cursor: pointer;
   > div:first-of-type {
     p {
-      color: ${grays.gray6}
+      color: ${grays.gray6};
     }
   }
   > div:not(:first-of-type) {
@@ -48,31 +48,38 @@ const Card = styled.div`
 export default function DocumentCard(props) {
   const { document } = props
 
-  return <Link href="/document">
-    <Card >
-      <div>
-        <h3>{document.name}</h3>
-        <p>{document.content}</p>
-      </div>
-      <div>
-        <h6>collabeditors</h6>
-        <Collabeditor collabeditor={document.owner} index={0} />
-        {
-          document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} key={`collabeditor-${i+1}`} /> )
-        }
-      </div>
-      <div>
+  return (
+    <Link href="/document">
+      <Card>
         <div>
-          <h6>updated</h6>
-          <p>{document.updated}</p>
+          <h3>{document.name}</h3>
+          <p>{document.content}</p>
         </div>
-        <Button
-          icon={<FaRegTrashAlt />}
-          onClick={() => {
-            console.log('clicked') }
-          }
-          color="red" />
-      </div>
-    </Card>
-  </Link>
+        <div>
+          <h6>collabeditors</h6>
+          <Collabeditor collabeditor={document.owner} index={0} />
+          {document.collabeditors.map((collabeditor, i) => (
+            <Collabeditor
+              collabeditor={collabeditor}
+              index={i + 1}
+              key={`collabeditor-${i + 1}`}
+            />
+          ))}
+        </div>
+        <div>
+          <div>
+            <h6>updated</h6>
+            <p>{document.updated}</p>
+          </div>
+          <Button
+            icon={<FaRegTrashAlt />}
+            onClick={() => {
+              console.log('clicked')
+            }}
+            color="red"
+          />
+        </div>
+      </Card>
+    </Link>
+  )
 }

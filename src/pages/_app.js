@@ -1,17 +1,17 @@
-import Head from "next/head";
+import Head from 'next/head'
 
-import { Auth0Provider } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
+import { Auth0Provider } from '@auth0/auth0-react'
+import { useState, useEffect } from 'react'
 
-import "@/styles/globals.css";
-import GlobalStyles from "@/styles/global";
+import '@/styles/globals.css'
+import GlobalStyles from '@/styles/global'
 
 export default function App({ Component, pageProps }) {
   let [location, setLocation] = useState('http://www.localhost:3000/')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        setLocation(window.location.origin)
+      setLocation(window.location.origin)
     }
   }, [])
 
@@ -26,7 +26,10 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <title>Collabeditor</title>
-        <meta name="description" content="Collaborate on documents with others" />
+        <meta
+          name="description"
+          content="Collaborate on documents with others"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -35,7 +38,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
       </GlobalStyles>
-      </>
+    </>
     // </Auth0Provider>
-  );
+  )
 }

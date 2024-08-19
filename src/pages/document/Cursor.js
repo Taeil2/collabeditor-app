@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { colors, grays } from "@/styles/styles"
+import styled from 'styled-components'
+import { colors, grays } from '@/styles/styles'
 
-const colorsArr = Object.keys(colors).map(key => [colors[key]]);
+const colorsArr = Object.keys(colors).map((key) => [colors[key]])
 
 const Line = styled.div`
   position: absolute;
@@ -16,7 +16,7 @@ const Line = styled.div`
   // line-height: 14px;
   // font-size: 10px;
   // color: #fff;
-  background: ${props => {
+  background: ${(props) => {
     if (props.$index < 5) {
       return colorsArr[props.$index * 2]
     } else {
@@ -38,7 +38,7 @@ const Tag = styled.div`
   line-height: 14px;
   font-size: 10px;
   color: #fff;
-  background: ${props => {
+  background: ${(props) => {
     if (props.$index < 5) {
       return colorsArr[props.$index * 2]
     } else {
@@ -51,8 +51,10 @@ const Tag = styled.div`
 export default function Cursor(props) {
   const { collabeditor, index } = props
 
-  return <>
-    <Line $index={index}></Line>
-    <Tag $index={index}>collabeditor.name</Tag>
-  </>
+  return (
+    <>
+      <Line $index={index}></Line>
+      <Tag $index={index}>collabeditor.name</Tag>
+    </>
+  )
 }

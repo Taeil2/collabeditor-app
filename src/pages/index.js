@@ -1,88 +1,93 @@
-import Header from "./index/Header"
-import DocumentCard from "./index/DocumentCard"
-import NameModal from "./index/NameModal"
+import Header from './index/Header'
+import DocumentCard from './index/DocumentCard'
+import NameModal from './index/NameModal'
 
-import LoginButton from "@/components/LoginButton"
+import LoginButton from '@/components/LoginButton'
 
 export default function Home() {
   const documents = [
     {
-      name: "Document 1",
-      content: "Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...",
+      name: 'Document 1',
+      content:
+        'Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...',
       owner: {
-        name: "taeil",
+        name: 'taeil',
       },
       collabeditors: [
         {
-          name: "xavier",
+          name: 'xavier',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
       ],
       updated: <span>8/88&nbsp;&nbsp;12:88 am</span>,
     },
     {
-      name: "Document 1",
-      content: "Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...",
+      name: 'Document 1',
+      content:
+        'Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...',
       owner: {
-        name: "taeil",
+        name: 'taeil',
       },
       collabeditors: [
         {
-          name: "xavier",
+          name: 'xavier',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
       ],
       updated: <span>8/88&nbsp;&nbsp;12:88 am</span>,
     },
     {
-      name: "Document 1",
-      content: "Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...",
+      name: 'Document 1',
+      content:
+        'Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...',
       owner: {
-        name: "taeil",
+        name: 'taeil',
       },
       collabeditors: [
         {
-          name: "xavier",
+          name: 'xavier',
         },
         {
-          name: "cooper",
+          name: 'cooper',
         },
       ],
       updated: <span>8/88&nbsp;&nbsp;12:88 am</span>,
     },
-]
+  ]
 
   return (
     <>
       {/* <LoginButton /> */}
       <Header />
-      {documents.map((document, i) => <DocumentCard document={document} key={`document-${i}`} />)}
+      {documents.map((document, i) => (
+        <DocumentCard document={document} key={`document-${i}`} />
+      ))}
       <NameModal />
     </>
-  );
+  )
 }

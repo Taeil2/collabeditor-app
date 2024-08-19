@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import Button from './Button';
+import Button from './Button'
 
 const ButtonContainer = styled.div`
-  display: inline-block; 
+  display: inline-block;
   border-radius: 5px;
   overflow: hidden;
   button {
@@ -17,11 +17,21 @@ const ButtonContainer = styled.div`
 export default function ButtonGroup(props) {
   const { buttons } = props
 
-  return <ButtonContainer>
-    {buttons.map((button, i) => {
-      const { icon, text, onClick } = button
+  return (
+    <ButtonContainer>
+      {buttons.map((button, i) => {
+        const { icon, text, onClick } = button
 
-      return <Button icon={icon} text={text} onClick={onClick} key={i} color="gray" />
-    })}
-  </ButtonContainer>
+        return (
+          <Button
+            icon={icon}
+            text={text}
+            onClick={onClick}
+            key={i}
+            color="gray"
+          />
+        )
+      })}
+    </ButtonContainer>
+  )
 }

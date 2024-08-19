@@ -1,13 +1,13 @@
-import styled from "styled-components"
-import { colors } from "@/styles/styles";
+import styled from 'styled-components'
+import { colors } from '@/styles/styles'
 
 import Link from 'next/link'
 
-import Button from "@/components/Button";
-import Collabeditor from "@/components/Collabeditor";
+import Button from '@/components/Button'
+import Collabeditor from '@/components/Collabeditor'
 
-import { IoIosArrowBack } from "react-icons/io";
-import { IoPeople } from "react-icons/io5";
+import { IoIosArrowBack } from 'react-icons/io'
+import { IoPeople } from 'react-icons/io5'
 
 const Container = styled.div`
   display: flex;
@@ -35,21 +35,34 @@ const Container = styled.div`
       margin-left: 10px;
     }
   }
-  
 `
 
 export default function Header(props) {
-  const { document } = props;
+  const { document } = props
 
-  return <Container>
-    <div>
-      <Link href="/"><IoIosArrowBack /> back to documents</Link>
-      <input type="text" placeholder="Document Name" />
-    </div>
-    <div>
-      <Collabeditor collabeditor={document.owner} index={0} key={`collabeditor-0`} />
-      { document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} key={`collabeditor-0${i+1}`} /> ) }
-      <Button icon={<IoPeople />} text="collabeditors" />
-    </div>
-  </Container>
+  return (
+    <Container>
+      <div>
+        <Link href="/">
+          <IoIosArrowBack /> back to documents
+        </Link>
+        <input type="text" placeholder="Document Name" />
+      </div>
+      <div>
+        <Collabeditor
+          collabeditor={document.owner}
+          index={0}
+          key={`collabeditor-0`}
+        />
+        {document.collabeditors.map((collabeditor, i) => (
+          <Collabeditor
+            collabeditor={collabeditor}
+            index={i + 1}
+            key={`collabeditor-0${i + 1}`}
+          />
+        ))}
+        <Button icon={<IoPeople />} text="collabeditors" />
+      </div>
+    </Container>
+  )
 }
