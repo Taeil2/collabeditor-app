@@ -17,6 +17,9 @@ const GlobalStyles = styled.div`
     display: inline-flex;
     align-items: center;
     text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
   }
 
   h1 {
@@ -64,6 +67,15 @@ const GlobalStyles = styled.div`
 
   textarea:focus, input:focus{
     outline: none;
+  }
+
+  input[type="text"], select {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid ${grays.gray3};
+    font-size: 16px;
+    padding: 0 10px;
+    color: ${grays.gray8};
   }
 `
 

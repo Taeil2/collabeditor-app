@@ -47,8 +47,8 @@ export default function Header(props) {
       <input type="text" placeholder="Document Name" />
     </div>
     <div>
-      <Collabeditor collabeditor={document.owner} index={0} />
-      { document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} /> ) }
+      <Collabeditor collabeditor={document.owner} index={0} key={`collabeditor-0`} />
+      { document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} key={`collabeditor-0${i+1}`} /> ) }
       <Button icon={<IoPeople />} text="collabeditors" />
     </div>
   </Container>

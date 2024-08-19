@@ -5,8 +5,9 @@
 -   modals
     -   what is your name
     -   Collabeditors
--   fix Auth0
 -   set up database
+-   socket.io integration
+-   fix Auth0
 -   publish
 
 ## Getting Started

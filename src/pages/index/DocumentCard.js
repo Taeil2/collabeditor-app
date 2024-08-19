@@ -58,7 +58,7 @@ export default function DocumentCard(props) {
         <h6>collabeditors</h6>
         <Collabeditor collabeditor={document.owner} index={0} />
         {
-          document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} /> )
+          document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} key={`collabeditor-${i+1}`} /> )
         }
       </div>
       <div>

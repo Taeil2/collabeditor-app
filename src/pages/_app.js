@@ -7,7 +7,7 @@ import "@/styles/globals.css";
 import GlobalStyles from "@/styles/global";
 
 export default function App({ Component, pageProps }) {
-  let [location, setLocation] = useState('')
+  let [location, setLocation] = useState('http://www.localhost:3000/')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -16,13 +16,14 @@ export default function App({ Component, pageProps }) {
   }, [])
 
   return (
-    <Auth0Provider
-      domain="dev-bn8s278zc54ocjvv.us.auth0.com"
-      clientId="kl6LAPOx7pSTazNZg07jQcfxiXJIdDED"
-      authorizationParams={{
-        redirect_uri: location,
-      }}
-    >
+    // <Auth0Provider
+    //   domain="dev-bn8s278zc54ocjvv.us.auth0.com"
+    //   clientId="kl6LAPOx7pSTazNZg07jQcfxiXJIdDED"
+    //   authorizationParams={{
+    //     redirect_uri: location,
+    //   }}
+    // >
+    <>
       <Head>
         <title>Collabeditor</title>
         <meta name="description" content="Collaborate on documents with others" />
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
       </GlobalStyles>
-    </Auth0Provider>
+      </>
+    // </Auth0Provider>
   );
 }

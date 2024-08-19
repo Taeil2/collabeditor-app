@@ -26,7 +26,11 @@ export default function Header() {
   return <Container>
     <div>
       <h2>Documents</h2>
-      <Button icon={<FaPlus />} text="new document" onClick={() => { console.log('clicked') }} />
+      <Button
+        icon={<FaPlus />}
+        text="new document"
+        onClick={() => { console.log('clicked') }}
+      />
     </div>
     <ButtonGroup buttons={[
       {
