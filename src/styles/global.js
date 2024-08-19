@@ -14,7 +14,8 @@ const GlobalStyles = styled.div`
   }
 
   a {
-    color: inherit;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
   }
 
@@ -60,6 +61,10 @@ const GlobalStyles = styled.div`
   p {
     line-height: 1.4em;
   }
-`;
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+`
 
 export default GlobalStyles

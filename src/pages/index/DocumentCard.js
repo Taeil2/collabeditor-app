@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { grays } from '@/styles/styles'
 
+import Link from 'next/link'
+
 import Collabeditor from '@/components/Collabeditor'
 import Button from '@/components/Button'
 
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa"
 
 const Card = styled.div`
   display: grid;
@@ -15,8 +17,8 @@ const Card = styled.div`
   padding: 20px;
   padding-top: 9px;
   background: #fff;
-  cursor: pointer;
   margin-bottom: 30px;
+  cursor: pointer;
   > div:first-of-type {
     p {
       color: ${grays.gray6}
@@ -46,29 +48,31 @@ const Card = styled.div`
 export default function DocumentCard(props) {
   const { document } = props
 
-  return <Card>
-    <div>
-      <h3>{document.name}</h3>
-      <p>{document.content}</p>
-    </div>
-    <div>
-      <h6>collabeditors</h6>
-      <Collabeditor collabeditor={document.owner} index={0} />
-      {
-        document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} /> )
-      }
-    </div>
-    <div>
+  return <Link href="/document">
+    <Card >
       <div>
-        <h6>updated</h6>
-        <p>{document.updated}</p>
+        <h3>{document.name}</h3>
+        <p>{document.content}</p>
       </div>
-      <Button
-        icon={<FaRegTrashAlt />}
-        onClick={() => {
-          console.log('clicked') }
+      <div>
+        <h6>collabeditors</h6>
+        <Collabeditor collabeditor={document.owner} index={0} />
+        {
+          document.collabeditors.map((collabeditor, i) => <Collabeditor collabeditor={collabeditor} index={i + 1} /> )
         }
-        color="red" />
-    </div>
-  </Card>
+      </div>
+      <div>
+        <div>
+          <h6>updated</h6>
+          <p>{document.updated}</p>
+        </div>
+        <Button
+          icon={<FaRegTrashAlt />}
+          onClick={() => {
+            console.log('clicked') }
+          }
+          color="red" />
+      </div>
+    </Card>
+  </Link>
 }

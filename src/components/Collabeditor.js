@@ -30,7 +30,7 @@ const Circle = styled.div`
   position: relative;
   cursor: default;
   margin: 0 2px;
-  &:hover + #tag {
+  &:hover + .tag {
     opacity: 1;
   }
 `
@@ -70,7 +70,7 @@ export default function Collabeditor(props) {
       <Circle $index={index}>
         {collabeditor.name[0]}
       </Circle>
-      <Tag id="tag" $index={index}>collabeditor.name</Tag>
+      <Tag className="tag" $index={index}>collabeditor.name</Tag>
       {index === 0 && <OwnerLabel>owner</OwnerLabel>}
     </Container>
 }
