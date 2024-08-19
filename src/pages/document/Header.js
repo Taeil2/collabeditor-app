@@ -50,11 +50,11 @@ export default function Header(props) {
       </div>
       <div>
         <Collabeditor
-          collabeditor={document.owner}
+          collabeditor={document?.owner}
           index={0}
           key={`collabeditor-0`}
         />
-        {document.collabeditors.map((collabeditor, i) => (
+        {document?.collabeditors.map((collabeditor, i) => (
           <Collabeditor
             collabeditor={collabeditor}
             index={i + 1}

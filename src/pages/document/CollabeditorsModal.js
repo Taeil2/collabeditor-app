@@ -20,7 +20,7 @@ const Form = styled.form`
 const names = ['taeil', 'taki', 'tahoe', 'taco']
 
 export default function CollabeditorsModal() {
-  const [] = useState('')
+  const [name, setName] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()

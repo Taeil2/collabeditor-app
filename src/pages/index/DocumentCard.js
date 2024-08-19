@@ -52,13 +52,13 @@ export default function DocumentCard(props) {
     <Link href="/document">
       <Card>
         <div>
-          <h3>{document.name}</h3>
-          <p>{document.content}</p>
+          <h3>{document?.name}</h3>
+          <p>{document?.content}</p>
         </div>
         <div>
           <h6>collabeditors</h6>
-          <Collabeditor collabeditor={document.owner} index={0} />
-          {document.collabeditors.map((collabeditor, i) => (
+          <Collabeditor collabeditor={document?.owner} index={0} />
+          {document?.collabeditors.map((collabeditor, i) => (
             <Collabeditor
               collabeditor={collabeditor}
               index={i + 1}
@@ -69,7 +69,7 @@ export default function DocumentCard(props) {
         <div>
           <div>
             <h6>updated</h6>
-            <p>{document.updated}</p>
+            <p>{document?.updated}</p>
           </div>
           <Button
             icon={<FaRegTrashAlt />}
