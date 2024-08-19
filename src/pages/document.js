@@ -77,7 +77,7 @@ export default function Document() {
 
   useEffect(() => {
     setCursor()
-  }, [value, setCursor])
+  }, [value])
 
   useEffect(() => {
     // const character =
