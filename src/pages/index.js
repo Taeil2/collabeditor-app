@@ -82,7 +82,7 @@ const documents = [
 export default function Home() {
   return (
     <>
-      {/* <LoginButton /> */}
+      <LoginButton />
       <Header />
       {documents.map((document, i) => (
         <DocumentCard document={document} key={`document-${i}`} />
