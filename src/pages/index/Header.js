@@ -7,6 +7,8 @@ import { FaPlus } from 'react-icons/fa6'
 import { FaPen } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -23,6 +25,8 @@ const Container = styled.div`
 `
 
 export default function Header() {
+  const { logout } = useAuth0()
+
   return (
     <Container>
       <div>
@@ -48,7 +52,7 @@ export default function Header() {
             icon: <MdLogout />,
             text: 'log out',
             onClick: () => {
-              console.log('clicked')
+              logout({ logoutParams: { returnTo: window.location.origin } })
             },
           },
         ]}
