@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useState } from 'react'
 
 import Button from '@/components/Button'
 import ButtonGroup from '@/components/ButtonGroup'
@@ -8,6 +9,7 @@ import { FaPen } from 'react-icons/fa'
 import { MdLogout } from 'react-icons/md'
 
 import { useAuth0 } from '@auth0/auth0-react'
+import NameModal from './NameModal'
 
 const Container = styled.div`
   display: flex;
@@ -25,6 +27,7 @@ const Container = styled.div`
 `
 
 export default function Header() {
+  const [changeNameOpen, setChangeNameOpen] = useState(false)
   const { logout } = useAuth0()
 
   return (
@@ -45,7 +48,7 @@ export default function Header() {
             icon: <FaPen />,
             text: 'change name',
             onClick: () => {
-              console.log('clicked')
+              setChangeNameOpen(true)
             },
           },
           {
@@ -57,6 +60,7 @@ export default function Header() {
           },
         ]}
       />
+      {changeNameOpen && <NameModal setChangeNameOpen={setChangeNameOpen} />}
     </Container>
   )
 }

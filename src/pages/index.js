@@ -1,6 +1,5 @@
 import Header from './index/Header'
 import DocumentCard from './index/DocumentCard'
-import NameModal from './index/NameModal'
 
 import LoginButton from '@/components/LoginButton'
 
@@ -87,7 +86,6 @@ export default function Home() {
       {documents.map((document, i) => (
         <DocumentCard document={document} key={`document-${i}`} />
       ))}
-      {/* <NameModal /> */}
     </>
   )
 }

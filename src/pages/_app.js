@@ -1,10 +1,12 @@
 import Head from 'next/head'
 
 import { Auth0Provider } from '@auth0/auth0-react'
+import UserProvider from '@/contexts/UserContext'
 import { useState, useEffect } from 'react'
 
 import '@/styles/globals.css'
 import GlobalStyles from '@/styles/global'
+import AuthenticationHandler from './_app/AuthenticationHandler'
 
 export default function App({ Component, pageProps }) {
   let [location, setLocation] = useState('http://www.localhost:3000/')
@@ -23,22 +25,21 @@ export default function App({ Component, pageProps }) {
         redirect_uri: location,
       }}
     >
-      <>
-        <Head>
-          <title>Collabeditor</title>
-          <meta
-            name="description"
-            content="Collaborate on documents with others"
-          />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <GlobalStyles>
-          <main>
-            <Component {...pageProps} />
-          </main>
-        </GlobalStyles>
-      </>
+      <Head>
+        <title>Collabeditor</title>
+        <meta
+          name="description"
+          content="Collaborate on documents with others"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <GlobalStyles>
+        <main>
+          {/* <AuthenticationHandler Component={Component} pageProps={pageProps} /> */}
+          <Component {...pageProps} />
+        </main>
+      </GlobalStyles>
     </Auth0Provider>
   )
 }

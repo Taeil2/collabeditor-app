@@ -64,14 +64,16 @@ const OwnerLabel = styled.div`
 `
 
 export default function Collabeditor(props) {
-  const { collabeditor, index } = props
+  const { collabeditor, index, showTag = true } = props
 
   return (
     <Container>
       <Circle $index={index}>{collabeditor?.name[0]}</Circle>
-      <Tag className="tag" $index={index}>
-        {collabeditor?.name}
-      </Tag>
+      {showTag && (
+        <Tag className="tag" $index={index}>
+          {collabeditor?.name}
+        </Tag>
+      )}
       {index === 0 && <OwnerLabel>owner</OwnerLabel>}
     </Container>
   )

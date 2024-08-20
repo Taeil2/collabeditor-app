@@ -13,13 +13,22 @@ const Form = styled.form`
     color: ${grays.gray6};
     margin-bottom: 10px;
   }
+  input {
+    width: 200px;
+    margin-right: 10px;
+  }
 `
 
-export default function NameModal() {
+export default function NameModal(props) {
+  const { setChangeNameOpen } = props
+
   const [name, setName] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
+
+    // TODO: update user's name
+    setChangeNameOpen(false)
   }
 
   return (

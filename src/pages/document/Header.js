@@ -1,10 +1,12 @@
 import styled from 'styled-components'
+import { useState } from 'react'
 import { colors } from '@/styles/styles'
 
 import Link from 'next/link'
 
 import Button from '@/components/Button'
 import Collabeditor from '@/components/Collabeditor'
+import CollabeditorsModal from './CollabeditorsModal'
 
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoPeople } from 'react-icons/io5'
@@ -38,6 +40,7 @@ const Container = styled.div`
 `
 
 export default function Header(props) {
+  const [collabeditorsOpen, setCollabeditorsOpen] = useState(false)
   const { document } = props
 
   return (
@@ -61,7 +64,14 @@ export default function Header(props) {
             key={`collabeditor-0${i + 1}`}
           />
         ))}
-        <Button icon={<IoPeople />} text="collabeditors" />
+        <Button
+          icon={<IoPeople />}
+          text="collabeditors"
+          onClick={() => {
+            setCollabeditorsOpen(true)
+          }}
+        />
+        {collabeditorsOpen && <CollabeditorsModal document={document} />}
       </div>
     </Container>
   )

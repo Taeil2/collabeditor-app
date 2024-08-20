@@ -10,6 +10,7 @@ const Mask = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 `
 
 const ModalContainer = styled.div`
@@ -19,7 +20,7 @@ const ModalContainer = styled.div`
 `
 
 export default function Modal(props) {
-  const { children, closeModal, closeButton } = props
+  const { children, closeButton, setShowModal } = props
 
   return (
     <Mask>

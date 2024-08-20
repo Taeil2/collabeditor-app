@@ -2,8 +2,10 @@ import { useRef, useState, useEffect } from 'react'
 
 import styled from 'styled-components'
 
-import Header from './document/Header'
-import Cursor from './document/Cursor'
+import Header from './Header'
+// import Cursor from './Cursor'
+
+import sampleDocument from './sampleDocument.json'
 
 const Page = styled.div`
   width: 100%;
@@ -28,51 +30,11 @@ const Page = styled.div`
   }
 `
 
-const document = {
-  name: 'Document 1',
-  content:
-    'Snippet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident...',
-  owner: {
-    name: 'taeil',
-  },
-  collabeditors: [
-    {
-      name: 'xavier',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-    {
-      name: 'cooper',
-    },
-  ],
-  updated: <span>8/88&nbsp;&nbsp;12:88 am</span>,
-}
-
 export default function Document() {
   const [value, setValue] = useState('')
   const dragging = useRef(false)
   const selection = useRef([0, 0])
   const ghostDivRef = useRef(null)
-  // const lastCharacterRef = useRef(null)
   const [ghostDivContent, setGhostDivContent] = useState()
 
   useEffect(() => {
@@ -80,8 +42,7 @@ export default function Document() {
   }, [value])
 
   useEffect(() => {
-    // const character =
-    console.log(ghostDivRef)
+    // console.log(ghostDivRef)
 
     // ghostDivRef.current.clientHeight
     // ghostDivRef.current.clientLeft
@@ -215,7 +176,7 @@ export default function Document() {
 
   return (
     <>
-      <Header document={document} />
+      <Header document={sampleDocument} />
       <Page>
         <textarea
           onMouseDown={textareaMouseDown}
