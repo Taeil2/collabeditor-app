@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { grays } from '@/styles/styles'
 
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
 import Collabeditor from '@/components/Collabeditor'
 import Button from '@/components/Button'

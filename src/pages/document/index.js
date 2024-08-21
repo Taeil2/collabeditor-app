@@ -3,9 +3,9 @@ import { useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import Header from './Header'
-// import Cursor from './Cursor'
+import Cursor from './Cursor'
 
-import sampleDocument from './sampleDocument.json'
+import sampleDocuments from '@/sampleDocuments'
 
 const Page = styled.div`
   width: 100%;
@@ -13,6 +13,12 @@ const Page = styled.div`
   // height: 1294px
   min-height: 1294.11765px; // 11 inch height: 1000px / 8.5 * 11 (for an 8.5x11 ratio)
   padding: 117.647059px; // 1 inch margins: 1 / 8.5 * 1000px
+`
+
+const Content = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
   textarea {
     width: 100%;
     height: 1058.82353px; // 9 inch height: 1000px / 8.5 * 9
@@ -22,8 +28,9 @@ const Page = styled.div`
     border: 1px solid #eee;
     font-family: Noto Sans;
     font-size: 14px;
+    // caret-color: transparent;
   }
-  div {
+  .ghostDiv {
     width: 100%;
     height: 100px;
     border: 1px solid #eee;
@@ -31,54 +38,60 @@ const Page = styled.div`
 `
 
 export default function Document() {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(sampleDocuments[0].content)
   const dragging = useRef(false)
   const selection = useRef([0, 0])
+  const selectionPosition = useRef([
+    [1, 0],
+    [1, 0],
+  ])
   const ghostDivRef = useRef(null)
   const [ghostDivContent, setGhostDivContent] = useState()
 
   useEffect(() => {
-    setCursor()
-  }, [value])
-
-  useEffect(() => {
-    // console.log(ghostDivRef)
-
-    // ghostDivRef.current.clientHeight
-    // ghostDivRef.current.clientLeft
-    // ghostDivRef.current.clientTop
-    // ghostDivRef.current.clientWidth
-
-    // ghostDivRef.current.offsetHeight
-    // ghostDivRef.current.offsetLeft
-    // ghostDivRef.current.offsetTop
-    // ghostDivRef.current.offsetWidth
-
-    if (ghostDivRef.current.children.length === 1) {
-      // cursor at single location
-      // ghostDivRef.current.children[0].offsetHeight
-      // ghostDivRef.current.children[0].offsetLeft
-      // ghostDivRef.current.children[0].offsetTop
-      // ghostDivRef.current.children[0].offsetWidth
-      // ghostDivRef.current.children[0].offsetHeight
-      // ghostDivRef.current.children[0].offsetLeft
-      // ghostDivRef.current.children[0].offsetTop
-      // ghostDivRef.current.children[0].offsetWidth
-    } else {
-      // range selected
+    if (ghostDivRef.current.children.length) {
+      // set first cursor
+      selectionPosition.current[0] = [
+        ghostDivRef.current.children[0]?.offsetLeft +
+          ghostDivRef.current.children[0]?.offsetWidth,
+        ghostDivRef.current.children[0]?.offsetTop -
+          ghostDivRef.current.offsetTop,
+      ]
+      if (ghostDivRef.current.children.length === 1) {
+        // second is same as first
+        selectionPosition.current[1] = [
+          ghostDivRef.current.children[0]?.offsetLeft +
+            ghostDivRef.current.children[0]?.offsetWidth,
+          ghostDivRef.current.children[0]?.offsetTop -
+            ghostDivRef.current.offsetTop,
+        ]
+      } else {
+        // range is selected
+        selectionPosition.current[1] = [
+          ghostDivRef.current.children[1]?.offsetLeft +
+            ghostDivRef.current.children[0]?.offsetWidth,
+          ghostDivRef.current.children[1]?.offsetTop -
+            ghostDivRef.current.offsetTop,
+        ]
+      }
     }
+
+    console.log('setting', ghostDivRef.current.children)
+    console.log('setting', selectionPosition.current)
+
+    // setCursor()
   }, [ghostDivContent])
 
   const textareaMouseDown = (e) => {
     dragging.current = true
     selection.current = [e.target.selectionStart, e.target.selectionEnd]
-    setCursor()
+    // setCursor()
     textareaDragging(e)
   }
 
   const textareaDragging = (e) => {
     selection.current = [e.target.selectionStart, e.target.selectionEnd]
-    setCursor()
+    // setCursor()
     setTimeout(() => {
       if (dragging.current) {
         textareaDragging(e)
@@ -89,7 +102,7 @@ export default function Document() {
   const textareaMouseUp = (e) => {
     dragging.current = false
     selection.current = [e.target.selectionStart, e.target.selectionEnd]
-    setCursor()
+    // setCursor()
   }
 
   const setCursor = () => {
@@ -176,16 +189,24 @@ export default function Document() {
 
   return (
     <>
-      <Header document={sampleDocument} />
+      <Header document={sampleDocuments[0]} />
       <Page>
-        <textarea
-          onMouseDown={textareaMouseDown}
-          onMouseUp={textareaMouseUp}
-          onChange={textareaOnChange}
-          value={value}
-        />
-        {/* <Cursor /> */}
-        <div ref={ghostDivRef}>{ghostDivContent}</div>
+        <Content>
+          <textarea
+            onMouseDown={textareaMouseDown}
+            onMouseUp={textareaMouseUp}
+            onChange={textareaOnChange}
+            value={value}
+          />
+          <Cursor
+            collabeditor={sampleDocuments[0].owner}
+            index={1}
+            selectionPosition={selectionPosition}
+          />
+          <div className="ghostDiv" ref={ghostDivRef}>
+            {ghostDivContent}
+          </div>
+        </Content>
       </Page>
     </>
   )

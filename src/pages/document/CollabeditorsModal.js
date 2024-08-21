@@ -6,7 +6,7 @@ import Button from '@/components/Button'
 import { useState } from 'react'
 import { grays } from '@/styles/styles'
 
-import { useCombobox, useSelect } from 'downshift'
+// import { useCombobox, useSelect } from 'downshift'
 import Collabeditor from '@/components/Collabeditor'
 import { FaRegTrashAlt } from 'react-icons/fa'
 

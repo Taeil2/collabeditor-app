@@ -5,17 +5,10 @@ const colorsArr = Object.keys(colors).map((key) => [colors[key]])
 
 const Line = styled.div`
   position: absolute;
-  width: 1px;
-  height: 20px;
-  // z-index: 1;
-  // top: 29px;
-  // left: 0;
-  // border-radius: 4px;
-  // padding: 0 3px;
-  // height: 14px;
-  // line-height: 14px;
-  // font-size: 10px;
-  // color: #fff;
+  width: 2px;
+  height: 19px;
+  left: ${(props) => `${props.$selectionPosition.current[0][0]}px`};
+  top: ${(props) => `${props.$selectionPosition.current[0][1]}px`};
   background: ${(props) => {
     if (props.$index < 5) {
       return colorsArr[props.$index * 2]
@@ -23,20 +16,23 @@ const Line = styled.div`
       return colorsArr[(props.$index - 5) * 2 + 1]
     }
   }};
-  // transition: opacity 200ms linear;
+`
+
+const TagContainer = styled.div`
+  position: relative;
+  height: 100%;
 `
 
 const Tag = styled.div`
-  opacity: 0;
   position: absolute;
   z-index: 1;
-  top: 29px;
+  bottom: -10px;
   left: 0;
   border-radius: 4px;
   padding: 0 3px;
-  height: 14px;
-  line-height: 14px;
-  font-size: 10px;
+  height: 10px;
+  line-height: 10px;
+  font-size: 7px;
   color: #fff;
   background: ${(props) => {
     if (props.$index < 5) {
@@ -45,16 +41,16 @@ const Tag = styled.div`
       return colorsArr[(props.$index - 5) * 2 + 1]
     }
   }};
-  transition: opacity 200ms linear;
 `
 
 export default function Cursor(props) {
-  const { collabeditor, index } = props
+  const { collabeditor, index, selectionPosition } = props
 
   return (
-    <>
-      <Line $index={index}></Line>
-      <Tag $index={index}>collabeditor.name</Tag>
-    </>
+    <Line $index={index} $selectionPosition={selectionPosition}>
+      <TagContainer>
+        <Tag $index={index}>{collabeditor.name}</Tag>
+      </TagContainer>
+    </Line>
   )
 }

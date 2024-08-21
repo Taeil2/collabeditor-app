@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { colors } from '@/styles/styles'
 
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
 import Button from '@/components/Button'
 import Collabeditor from '@/components/Collabeditor'
